@@ -76,10 +76,10 @@ let losses = 0;
 
 		if(result==WIN) {
 			wins++; 
-			playerInfoText.textContent = "You win! CPU played " + cpuAnswer.charAt(0).toUpperCase() + cpuAnswer.substring(1) + " and " + pAnswer.charAt(0).toUpperCase() + pAnswer.substring(1) + " beats " + cpuAnswer.charAt(0).toUpperCase() + cpuAnswer.substring(1) + "!"; 
+			playerInfoText.textContent = "You win! CPU played " + cpuAnswer.toUpperCase()  + " and " + pAnswer.toUpperCase() + " beats " + cpuAnswer.toUpperCase()  + "!"; 
 		} else if (result==LOSE) {
 			losses++; 
-			playerInfoText.textContent = "You lose! CPU played " + cpuAnswer.charAt(0).toUpperCase() + cpuAnswer.substring(1) + " and " + cpuAnswer.charAt(0).toUpperCase() + cpuAnswer.substring(1) + " beats " + pAnswer.charAt(0).toUpperCase()+ pAnswer.substring(1)  + "!"; 
+			playerInfoText.textContent = "You lose! CPU played " + cpuAnswer.toUpperCase() + " and " + cpuAnswer.toUpperCase() + " beats " + pAnswer.toUpperCase()  + "!"; 
 		} else if( result==DRAW) {
 			playerInfoText.textContent = "It's a draw! NOBODY WINS! Select your next move."; 
 			
@@ -91,13 +91,28 @@ let losses = 0;
 
 		if(wins==winsRequired || losses==winsRequired) {
 			if(result) {
-				playerInfoText.textContent = "You won the set! Final score is " + wins + " - " + losses + ". Refresh the page to play again!"; 
+				playerInfoText.textContent = "You won the set! Final score is " + wins + " - " + losses + ". Click the RESET button to play again!"; 
 			} else {
-				playerInfoText.textContent = "You lost the set, CPU wins! Final score is " + wins + " - " + losses + ". Refresh the page to play again!"; 
+				playerInfoText.textContent = "You lost the set, CPU wins! Final score is " + wins + " - " + losses + ". Click the RESET button to play again!"; 
 			}
 		}
 	}
 
+	function resetGame(e) {
+		wins = 0; 
+		losses = 0; 
+		let playerInfoText = document.querySelector("#player-info-text"); 
+		let playerScore = document.querySelector("#player-score");
+		let cpuScore = document.querySelector("#cpu-score");
+
+		playerInfoText.textContent = "BEAT THE CPU IN A BATTLE OF WITS, BEST OF FIVE WINS"
+		playerScore.textContent = wins; 
+		cpuScore.textContent = losses;
+
+	}
 
 	const playerButtons = document.querySelectorAll(".player-buttons"); 
 	playerButtons.forEach(btn => btn.addEventListener("click", playGame));
+
+	const resetButton = document.querySelector(".reset"); 
+	resetButton.addEventListener("click", resetGame); 

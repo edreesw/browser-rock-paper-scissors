@@ -23,7 +23,7 @@ li {
 }
 
 #score-container {
-	font-size: 48px; 
+	font-size: 64px; 
 }
 
 #player-info-container {
@@ -36,7 +36,7 @@ li {
 	padding: 10px; 
 }
 
-.player-buttons {
+.player-buttons, .reset {
 	border: none; 
 	font-size: 32px; 
 	padding: 7px; 
@@ -44,6 +44,12 @@ li {
 	width: 100%;
 	border-radius: 25px; 
 
+}
+
+.reset {
+	margin-top: 50px;
+	background-color: rgb(9, 74, 9);
+	color: white; 
 }
 
 button:hover {
